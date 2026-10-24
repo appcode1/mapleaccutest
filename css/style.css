@@ -1,0 +1,364 @@
+/* =========================================================
+   Maple AccuTest — static website stylesheet
+   Hand-written CSS. Fully self-contained static styling.
+   Fonts, colours, sizes and layout values are taken from the
+   original site's computed styles.
+   ========================================================= */
+
+/* ---------- Font (local, Montserrat) ---------- */
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:300;font-display:swap;
+  src:url(../fonts/Montserrat-300-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:400;font-display:swap;
+  src:url(../fonts/Montserrat-400-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:500;font-display:swap;
+  src:url(../fonts/Montserrat-500-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:600;font-display:swap;
+  src:url(../fonts/Montserrat-600-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:700;font-display:swap;
+  src:url(../fonts/Montserrat-700-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:800;font-display:swap;
+  src:url(../fonts/Montserrat-800-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:900;font-display:swap;
+  src:url(../fonts/Montserrat-900-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+
+/* ---------- Design tokens (measured from the original) ---------- */
+:root{
+  --link:#0581BF;          /* nav active + links        */
+  --ink:#0A0A0A;           /* headings + nav inactive   */
+  --body:#423838;          /* body copy                 */
+  --navy:#002747;          /* primary button background */
+  --light:#F3F4F6;         /* page background           */
+  --white:#fff;
+  --primary-blue: #0581bf;
+  --accent-blue: #0aa3f2;  
+  --shadow:0 0 30px rgba(0,0,0,.1);
+  --container:1180px;
+  --radius:2px;
+}
+
+/* ---------- Reset ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  font-family:'Montserrat',-apple-system,"Segoe UI",Arial,sans-serif;
+  font-size:16px;
+  line-height:1.8;
+  color:var(--body);
+  background:var(--light);
+  overflow-x:hidden;
+}
+img{max-width:100%;height:auto;border:0}
+a{color:var(--link);text-decoration:none;transition:color .25s ease}
+a:hover{color:var(--navy)}
+ul{margin:0 0 20px;padding-left:22px}
+li{margin:0 0 8px}
+p{margin:0 0 20px}
+h1,h2,h3,h4,h5,h6{
+  font-family:'Montserrat',-apple-system,"Segoe UI",Arial,sans-serif;
+  color:var(--ink);
+  margin:0 0 18px;
+  line-height:1.3;
+  font-weight:700;
+}
+h1{font-size:38px;line-height:1.3}
+h2{font-size:38px;line-height:1.3}
+h3{font-size:26px}
+h4{font-size:19px}
+h5{font-size:18px}
+
+.container{width:100%;max-width:var(--container);margin:0 auto;padding:0 20px}
+.section{padding:100px 0}
+.section--flush{padding-top:50px}
+.section--light{background:#fff}
+
+.skip-link{
+  position:absolute;left:-9999px;top:0;background:var(--navy);color:#fff;
+  padding:10px 18px;z-index:2000
+}
+.skip-link:focus{left:0}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:15px 40px;border-radius:var(--radius);border:0;
+  font-family:'Montserrat',Arial,sans-serif;font-size:16px;font-weight:600;
+  line-height:1;letter-spacing:0;cursor:pointer;
+  transition:background-color .3s ease,color .3s ease;
+}
+.btn--navy{background:var(--navy);color:#fff}
+.btn--navy:hover{background:#02406e;color:#fff}
+.btn__arrow{font-size:13px;line-height:1}
+
+/* ---------- Header ---------- */
+.site-header{
+  position:sticky;top:0;z-index:1000;
+  background:#fff;
+}
+.site-header__inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:24px;min-height:108px;max-width:1200px;margin:0 auto;padding:0 20px;
+}
+.brand{display:flex;align-items:center}
+.brand img{width:139px;height:43px}
+.main-nav{display:flex;align-items:center;flex-wrap:wrap}
+.main-nav a{
+  color:var(--ink);font-size:16px;font-weight:600;
+  padding:0 16px;
+}
+.main-nav a:hover{color:var(--link)}
+.main-nav a.is-active{color:var(--link)}
+.main-nav .nav-contact{color:var(--link);font-size:16px;font-weight:400;padding:0 16px}
+.main-nav .nav-contact:hover{color:var(--navy)}
+
+.nav-toggle{
+  display:none;background:none;border:0;cursor:pointer;padding:10px;
+}
+.nav-toggle span{
+  display:block;width:26px;height:3px;background:var(--link);
+  margin:5px 0;border-radius:2px;transition:.3s
+}
+.nav-contact {
+  background: var(--primary-blue);
+  color: var(--white) !important;
+  border-radius: 4px;
+  padding: 10px 24px !important;
+  margin-left: 10px;
+}
+
+.nav-contact:hover {
+  background: var(--accent-blue);
+  color: var(--white) !important;
+}
+/* =========================================================
+   HOME HERO — the original shows TWO images side by side
+   left  half : hero-overlay.jpg  (cover, 50% 0%)
+   right half : home-banner.jpg   (tiled at natural size)
+   The text block lives in the right half.
+   ========================================================= */
+.hero{
+  position:relative;
+  background:url(../images/home-banner.jpg) 0 0/auto auto repeat;
+  min-height:760px;
+  overflow:hidden;
+}
+.hero__panel{
+  position:absolute;left:0;top:0;width:49.8%;height:100%;
+  background:url(../images/hero-overlay.jpg) 50% 0%/cover no-repeat;
+}
+.hero__panel::before{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(180deg,rgba(114,114,114,.16) 0%,rgba(47,95,140,.36) 100%);
+}
+.hero__banner{display:none}
+.hero__body{
+  position:relative;z-index:2;
+  margin-left:50%;
+  min-height:760px;
+  padding:180px 50px;
+}
+.hero h1{
+  color:#fff;font-size:51px;line-height:1.4;font-weight:700;
+  margin:0 0 16px;mix-blend-mode:luminosity;
+}
+.hero__card h3{color:#fff;font-size:26px;line-height:1.3;font-weight:700;margin:0 0 8px}
+.hero__card p{color:#fff;font-size:16px;line-height:1.8;margin:0 0 28px}
+
+/* ---------- Page banner (inner pages) ---------- */
+.page-banner{
+  position:relative;
+  background:url(../images/page-banner.jpg) top center/cover no-repeat;
+  min-height:325px;
+  display:flex;align-items:center;
+}
+.page-banner::before{
+  content:"";position:absolute;inset:0;
+  background:rgba(5,129,191,.5);
+}
+.page-banner--plain::before{display:none}
+.page-banner__inner{position:relative;z-index:2;text-align:center;width:100%;padding-left:30px;padding-right:30px}
+.page-banner h1{color:#fff;font-size:75px;line-height:1.4;font-weight:700;margin:0}
+
+/* phone call-out below the banner (Contact page only) */
+.cta-line{
+  text-align:center;
+  padding:40px 20px 30px;
+  font-size:25px;font-weight:400;line-height:1.16;
+}
+.cta-line a{color:var(--link)}
+.cta-line a:hover{color:var(--navy)}
+
+/* ---------- Section heading + rule ---------- */
+.section-head{max-width:100%}
+.section-head h2{margin-bottom:14px;font-size:38px;line-height:1.3}
+.section-head--center{text-align:center}
+.section-head--center .rule{margin-left:auto;margin-right:auto}
+.rule{
+  width:14%;min-width:60px;height:3px;background:var(--ink);
+  border:0;margin:14px 0 34px;border-radius:2px
+}
+
+/* ---------- Content ---------- */
+.prose h2{margin-top:8px}
+.prose h4{margin-top:34px;margin-bottom:10px}
+.figure{margin:30px 0}
+.figure img{width:100%;border-radius:2px}
+.figure figcaption{font-size:13px;margin-top:10px;text-align:center}
+
+/* ---------- Service cards ---------- */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;margin-top:12px}
+.card{
+  background:transparent;border-radius:2px;
+  padding:20px 15px;text-align:center;
+}
+.card__img{width:97px;height:97px;margin:0 auto 15px}
+.card__img img{width:100%;height:100%;object-fit:contain;transition:transform .3s ease}
+.card:hover .card__img img{transform:scale(1.06)}
+.card h3{font-size:20px;margin-bottom:12px;font-weight:700}
+.card h3 a{color:var(--ink)}
+.card h3 a:hover{color:var(--link)}
+.card p{font-size:12px;line-height:1.4;letter-spacing:.4px;margin:0}
+
+/* ---------- Info cards (contact) ---------- */
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;margin-top:16px}
+.info-card{text-align:center;padding:20px 15px}
+.info-card__img{width:97px;height:97px;margin:0 auto 15px}
+.info-card__img img{width:100%;height:100%;object-fit:contain}
+.info-card h3{font-size:26px;line-height:1.3;margin-bottom:15px}
+.info-card p{font-size:16px;line-height:1.8;margin:0}
+
+/* ---------- FAQ accordion ---------- */
+.faq-head h2{font-size:21px;line-height:1.3;font-weight:700}
+.faq{max-width:1100px;margin:0 auto}
+.faq-item{
+  background:#fff;box-shadow:var(--shadow);border-radius:0;
+  margin-bottom:16px;overflow:hidden
+}
+.faq-item__q{
+  width:100%;display:flex;align-items:center;gap:12px;
+  background:none;border:0;cursor:pointer;text-align:left;
+  padding:21px;font-family:'Montserrat',Arial,sans-serif;
+  font-size:18px;font-weight:700;color:var(--ink);line-height:1.2
+}
+.faq-item__q:hover{color:var(--link)}
+.faq-item__icon{
+  flex:0 0 auto;width:16px;height:16px;position:relative
+}
+.faq-item__icon::before,.faq-item__icon::after{
+  content:"";position:absolute;background:var(--link);border-radius:1px;
+  top:50%;left:50%;transform:translate(-50%,-50%)
+}
+.faq-item__icon::before{width:16px;height:2px}
+.faq-item__icon::after{width:2px;height:16px;transition:transform .3s ease}
+.faq-item.is-open .faq-item__icon::after{transform:translate(-50%,-50%) rotate(90deg)}
+.faq-item__a{padding:0 21px 21px 21px;font-size:16px;line-height:1.8}
+.faq-item__a[hidden]{display:none}
+.faq-item__a p:last-child{margin-bottom:0}
+
+/* ---------- Contact details ---------- */
+.contact-lead{font-size:16px}
+.contact-lead a{font-weight:500}
+.map-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:26px}
+.map-card{
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#2F5F8C,var(--navy));
+  box-shadow:var(--shadow);min-height:280px
+}
+.map-card iframe{width:100%;height:280px;border:0;display:block}
+.map-card__label{
+  position:absolute;left:0;right:0;bottom:0;
+  background:rgba(17,26,40,.82);color:#fff;
+  padding:12px 18px;font-size:14px;font-weight:500
+}
+
+/* ---------- Legal pages ---------- */
+.legal h2{font-size:38px;line-height:1.3;margin:25px 0 18px}
+.legal h3{font-size:26px;line-height:1.3;margin:25px 0 12px}
+.legal h2:first-child{margin-top:0}
+.legal ul{list-style:disc}
+
+/* ---------- Footer ---------- */
+.site-footer{background:var(--ink);color:#fff;padding:40px 0;min-height:148px;
+  display:flex;align-items:center}
+.site-footer__inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:20px;flex-wrap:wrap;font-size:16px;line-height:1.8;width:100%
+}
+.site-footer a{color:#fff}
+.site-footer a:hover{color:#9fd4ef}
+.footer-links{display:flex;gap:0;list-style:none;margin:0;padding:0}
+.footer-links li{margin:0}
+.footer-links a{padding:0 20px}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1100px){
+  .hero h1{font-size:42px}
+  .page-banner h1{font-size:56px}
+}
+@media (max-width:992px){
+  /* both images stay side by side, banner switches to "contain" */
+  .hero{background-size:contain;background-repeat:no-repeat;min-height:440px}
+  .hero__body{min-height:440px;padding:70px 40px}
+  .hero h1{font-size:44px;line-height:1.3}
+  .hero__card h3{font-size:22px}
+  .page-banner h1{font-size:48px}
+  .page-banner{min-height:280px}
+  .section-head h2{font-size:32px}
+  .cards,.info-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:768px){
+  body{font-size:14.592px;line-height:1.8}
+  .nav-toggle{display:block}
+  .main-nav{
+    display:none;position:absolute;top:100%;left:0;right:0;
+    background:#fff;flex-direction:column;align-items:stretch;
+    padding:8px 0 16px;box-shadow:0 12px 24px rgba(0,0,0,.12)
+  }
+  .main-nav.is-open{display:flex}
+  .main-nav a,.main-nav .nav-contact{line-height:1.4;padding:12px 20px;font-size:14.592px}
+  .btn{font-size:14px}
+  .section{padding:52px 0}
+  .site-footer__inner{font-size:14.592px}
+  .map-grid{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  /* stack: text block, then the banner photo, then the second photo */
+  .hero{
+    display:flex;flex-direction:column;
+    background:none;min-height:0
+  }
+  .hero__body{
+    order:1;margin-left:0;min-height:0;
+    padding:35px 30px 40px
+  }
+  .hero__banner{
+    order:2;display:block;height:280px;
+    background:url(../images/home-banner.jpg) 50% 50%/cover no-repeat;
+  }
+  .hero__panel{
+    order:3;position:static;width:100%;height:300px
+  }
+  .hero h1{font-size:38px;line-height:1.3}
+  .hero__card h3{font-size:22px}
+  .page-banner h1{font-size:30px;line-height:1.4}
+  .page-banner{min-height:262px;padding:40px 0}
+  .section-head h2{font-size:25px;line-height:1.3}
+  .section-head--mobile-center{text-align:center}
+  .cards,.info-grid{grid-template-columns:1fr}
+  .faq-item__q{font-size:17px;padding:18px}
+  .faq-item__a{padding:0 18px 18px}
+  .site-footer{min-height:0}
+  .site-footer__inner{flex-direction:column;text-align:center}
+  .footer-links a{padding:0 12px}
+}
+@media (max-width:420px){
+  .hero h1{font-size:34px}
+  .page-banner h1{font-size:27px}
+}
